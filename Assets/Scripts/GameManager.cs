@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float percentage = Mathf.Ceil(100f * (currentPickup / 11f));
+        GameObject.Find("RubbishText").GetComponent<Text>().text = "Collected " + percentage + "% of rubbish";
     }
 
     public void AddPickup(int pickupToAdd)
@@ -23,4 +25,8 @@ public class GameManager : MonoBehaviour
         currentPickup += pickupToAdd;
     }
 
+    public int GetCurrentPickup()
+    {
+        return currentPickup;
+    }
 }
